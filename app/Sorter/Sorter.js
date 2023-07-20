@@ -15,8 +15,8 @@ export default function Sorter() {
         }
         return array;
     }
-    function updateArray(array) {
-        setArray(array);
+    function updateArray() {
+        setArray(resetArray());
     }
 
     console.info(array)
