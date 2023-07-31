@@ -1,10 +1,26 @@
 .array-container {
-    position: relative;
+    position: fixed;
+    bottom: 10%;
+    width: 100%;
+    margin-left: 100px;
+    margin-right: 100px
 }
 
 .array-bar {
     width: 2px;
     background-color: blue;
-    display: block;
+    display: inline-block;
     margin: 0 1px;
+}
+
+.button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
