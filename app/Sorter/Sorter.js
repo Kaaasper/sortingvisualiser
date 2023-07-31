@@ -4,22 +4,16 @@ import React from 'react';
 
 const NUMBER_OF_ARRAY_BARS = 300;
 
-export default function Sorter() {
-    const [array, setArray] = React.useState(resetArray());
+export default function Sorter({ initialData }) {
+    const [array, setArray] = React.useState([]);
 
+    React.useEffect(() => {
+        updateArray()
+    }, [])
 
-    function resetArray() {
-        const array = [];
-        for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-            array.push(randomIntFromInterval(5, 730));
-        }
-        return array;
-    }
     function updateArray() {
-        setArray(resetArray());
+        setArray(generateRandomNumbers(NUMBER_OF_ARRAY_BARS, 5, 600));
     }
-
-    console.info(array)
 
     return (
         <>
@@ -35,9 +29,16 @@ export default function Sorter() {
 
 }
 
-// From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
-function randomIntFromInterval(min, max) {
-    // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min);
+
+
+function generateRandomNumbers(count, max, min) {
+    const randomNumbers = [];
+    for (let i = 0; i < count; i++) {
+        const randomNumber = Math.floor(Math.random() * (max - min + 1) + min); // Generate a random number between 0 and 99
+        randomNumbers.push(randomNumber);
+    }
+    return randomNumbers;
 }
+
+
 
