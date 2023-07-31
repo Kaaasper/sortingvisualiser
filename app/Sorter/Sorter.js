@@ -4,7 +4,7 @@ import React from 'react';
 
 const NUMBER_OF_ARRAY_BARS = 300;
 
-export default function Sorter({ initialData }) {
+export default function Sorter() {
     const [array, setArray] = React.useState([]);
 
     React.useEffect(() => {
