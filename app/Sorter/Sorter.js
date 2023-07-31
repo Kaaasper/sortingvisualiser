@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import './Sorter.css';
 
 const NUMBER_OF_ARRAY_BARS = 300;
 
@@ -16,14 +17,17 @@ export default function Sorter() {
     }
 
     return (
-        <>
+        <div className="array-container">
             {array.map((value, index) =>
             (
                 <div className="array-bar" key={index}>
                     {value}
                 </div>
             ))}
-        </>
+
+            <button onClick={() => updateArray()}>Generate New Array</button>
+        </div>
+
 
     );
 
