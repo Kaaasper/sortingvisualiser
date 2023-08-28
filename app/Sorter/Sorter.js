@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './Sorter.css';
 import { getAnimations } from './sortingAlgorithms';
 
@@ -9,7 +10,6 @@ export default function Sorter() {
     const [width, setWidth] = React.useState(0)
     const [height, setHeight] = React.useState(0)
     let resizeTimeout;
-    const bars = document.getElementsByClassName('array-bar');
 
     React.useEffect(() => {
         // component is mounted and window is available
@@ -19,7 +19,6 @@ export default function Sorter() {
         return () => window.removeEventListener('resize', handleWindowResize);
     }, []);
 
-    // Number of bars are set based on the width of the screen. 200px subtracted for margins, and each bar is 4 pixels.
     function updateArray(width, height) {
         // Clear all timeouts, stopping the animation
         const highestId = window.setTimeout(() => {
@@ -28,10 +27,13 @@ export default function Sorter() {
             }
         }, 0);
 
+        // Number of bars are set based on the width of the screen. 200px subtracted for margins, and each bar is 4 pixels.
         setArray(generateRandomNumbers((width - 200) / 4, 5, height - 300));
 
         // Turn all bars back to the default color
-        for (let i = 0; i < bars.length; i++) { bars[i].style.backgroundColor = 'blue' }
+        const bars = document.getElementsByClassName('array-bar');
+
+        for (let i = 0; i < bars.length; i++) { bars[i].style.backgroundColor = 'blue'; console.log(bars[i].style.backgroundColor); }
     }
 
     function handleWindowResize() {
@@ -46,9 +48,10 @@ export default function Sorter() {
 
     function quicksort(array) {
         let delay = 0;
-
+        const bars = document.getElementsByClassName('array-bar');
         const animations = getAnimations(array)
         for (let i = 0; i < animations.length; i++) {
+
             const [index1, index2, type, value1, value2] = animations[i]
             if (type == 'comparison') {
                 setTimeout(() => {
