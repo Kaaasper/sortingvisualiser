@@ -21,19 +21,16 @@ export default function Sorter() {
 
     function updateArray(width, height) {
         // Clear all timeouts, stopping the animation
-        const highestId = window.setTimeout(() => {
-            for (let i = highestId; i >= 0; i--) {
-                window.clearInterval(i);
-            }
-        }, 0);
-
+        const highestId = window.setTimeout(() => { }, 0);
+        for (let i = highestId; i >= 0; i--) {
+            window.clearTimeout(i);
+        }
         // Number of bars are set based on the width of the screen. 200px subtracted for margins, and each bar is 4 pixels.
         setArray(generateRandomNumbers((width - 200) / 4, 5, height - 300));
 
         // Turn all bars back to the default color
         const bars = document.getElementsByClassName('array-bar');
-
-        for (let i = 0; i < bars.length; i++) { bars[i].style.backgroundColor = 'blue'; console.log(bars[i].style.backgroundColor); }
+        for (let i = 0; i < bars.length; i++) { console.log(bars[i].style.backgroundColor); bars[i].style.backgroundColor = 'blue'; }
     }
 
     function handleWindowResize() {
